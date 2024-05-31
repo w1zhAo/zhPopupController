@@ -487,9 +487,8 @@
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notif {
     NSDictionary *u = notif.userInfo;
-    CGRect frameBegin = [u[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGRect frameEnd = [u[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    if (frameBegin.size.height > 0 && ABS(CGRectGetMinY(frameBegin) - CGRectGetMinY(frameEnd))) {
+    if (ABS(CGRectGetMinY(frameBegin) - CGRectGetMinY(frameEnd))) {
         CGRect frameConverted = [self.maskView convertRect:frameEnd fromView:nil];
         CGFloat keyboardHeightConverted = self.maskView.bounds.size.height - CGRectGetMinY(frameConverted);
         if (keyboardHeightConverted > 0) {
